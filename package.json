@@ -1,9 +1,16 @@
 {
   "name": "now-secrets",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "author": "dotPlants HQ <oss@dotplants.net>",
   "license": "MIT",
-  "private": true,
+  "repository": "https://github.com/dotplants/now-secrets.git",
+  "homepage": "https://github.com/dotplants/now-secrets",
+  "engines": {
+    "node": "10.x || 12.x || 13.x"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "lint:js": "eslint --ignore-path .gitignore \"**/*.js\"",
     "lint:prettier": "pretty-quick --check",
@@ -11,13 +18,16 @@
     "format:js": "eslint --fix --ignore-path .gitignore \"**/*.js\"",
     "format:prettier": "pretty-quick",
     "format": "npm-run-all format:* -s",
-    "build": "npm-run-all build:* -s",
-    "start": "./bin/run"
+    "build": "babel src -d build",
+    "start": "yarn build && ./bin/run",
+    "prepublish": "yarn build"
   },
   "devDependencies": {
+    "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
     "@oclif/dev-cli": "^1",
+    "@yuzulabo/eslint-config": "^1.0.1",
     "@yuzulabo/prettier-config": "~1",
     "babel-eslint": "^10.0.3",
     "cross-env": "^6.0.3",
@@ -31,10 +41,35 @@
   "dependencies": {
     "@oclif/command": "^1",
     "@oclif/config": "^1",
-    "@oclif/plugin-help": "^2"
+    "@oclif/errors": "^1.2.2",
+    "@oclif/plugin-help": "^2",
+    "@oclif/plugin-not-found": "^1.2.3",
+    "chalk": "^3.0.0",
+    "dotenv": "^8.2.0"
+  },
+  "files": [
+    "/bin",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json",
+    "package.json",
+    "README.md",
+    "/build"
+  ],
+  "bin": {
+    "now-secrets": "./bin/run"
   },
   "oclif": {
-    "bin": "now-secrets"
+    "commands": "./build/commands",
+    "bin": "now-secrets",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-not-found"
+    ],
+    "hooks": {
+      "prerun": [
+        "./build/hooks/prerun/hello"
+      ]
+    }
   },
   "prettier": "@yuzulabo/prettier-config"
 }
