@@ -1,0 +1,40 @@
+{
+  "name": "now-secrets",
+  "version": "1.0.0",
+  "author": "dotPlants HQ <oss@dotplants.net>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "lint:js": "eslint --ignore-path .gitignore \"**/*.js\"",
+    "lint:prettier": "pretty-quick --check",
+    "lint": "npm-run-all lint:* -s",
+    "format:js": "eslint --fix --ignore-path .gitignore \"**/*.js\"",
+    "format:prettier": "pretty-quick",
+    "format": "npm-run-all format:* -s",
+    "build": "npm-run-all build:* -s",
+    "start": "./bin/run"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@oclif/dev-cli": "^1",
+    "@yuzulabo/prettier-config": "~1",
+    "babel-eslint": "^10.0.3",
+    "cross-env": "^6.0.3",
+    "eslint": "~6",
+    "eslint-config-oclif": "^3.1",
+    "npm-run-all": "~4",
+    "parcel-bundler": "~1",
+    "prettier": "~1",
+    "pretty-quick": "^2.0.1"
+  },
+  "dependencies": {
+    "@oclif/command": "^1",
+    "@oclif/config": "^1",
+    "@oclif/plugin-help": "^2"
+  },
+  "oclif": {
+    "bin": "now-secrets"
+  },
+  "prettier": "@yuzulabo/prettier-config"
+}
