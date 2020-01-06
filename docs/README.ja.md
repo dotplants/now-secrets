@@ -7,36 +7,36 @@
 
 [English](https://github.com/dotplants/now-secrets/blob/master/README.md) | [日本語](https://github.com/dotplants/now-secrets/blob/master/docs/README.ja.md)
 
-# What's this?
+# これは何？
 
-**now-secrets** is a command to automatically update [ZEIT Now](https://zeit.co) secrets based on .env.
+**now-secrets** は .env に基づいて[ZEIT Now](https://zeit.co)のシークレットを自動でアップデートするコマンドを提供します。
 
-**⚠ This is an unofficial project.**
+**⚠ これは非公式のプロジェクトです。**
 
-# Getting Started
+# 始める
 
-- Install this package to global.
+- このパッケージをグローバルインストールします。
 
 ```bash
 npx add-pkg -g now-secrets # add-pkg: https://add-pkg.dotplants.net
 ```
 
-- Move to your project and edit `.env`.
+- あなたのプロジェクトに移動し、 `.env` を編集します。
 
 ```bash
 cd /path/to/your-project
 vi .env
 ```
 
-- Add `ZEIT_TOKEN` to .env.
-  > You can create the token from https://zeit.co/account/tokens.
+- `ZEIT_TOKEN` を.env に追加します。
+  > トークンは https://zeit.co/account/tokens から作成できます。
 
 ```
 ZEIT_TOKEN=foobar
 OTHER_ENV=hogefuga
 ```
 
-- Run `now-secrets`.
+- `now-secrets` を実行します。
 
 ```
 now-secrets
@@ -44,46 +44,46 @@ now-secrets
 
 - If successful, `@{prefix}_{env_key}` has been added.
 
-# Config
+# 設定
 
-In `package.json`:
+`package.json` 内:
 
 ```
 {
   ...
   "now_secrets": {
     "prefix": "",
-    "env_file_name": "" // default: .env
+    "env_file_name": "" // デフォルト: .env
   }
 }
 ```
 
-- prefix: `now_secrets.prefix` in package.json > `name` in now.json > `name` in package.json
-- scope: `scope` in now.json > personal account
+- prefix: package.json 内の `now_secrets.prefix` > now.json 内の `name` > package.json 内の `name`
+- scope: now.json 内の `scope` > 個人アカウント
 
 # CLI Usage
 
-### Update all secrets
+### 全てのシークレットを更新
 
 ```bash
 now-secrets
 ```
 
-### Add only
+### 追加のみ実行
 
-> ZEIT Now specifications: Secrets that have already been added return an error.
+> ZEIT Now の仕様: 既にあるシークレットを新たに追加しようとした場合はエラーが返ります。
 
 ```bash
 now-secrets --no-remove
 ```
 
-### Remove only (clean)
+### 削除のみ実行
 
 ```bash
 now-secrets --clean
 ```
 
-### Do not update now.json
+### now.json を更新しない
 
 ```bash
 now-secrets --no-update-now-json
