@@ -1,0 +1,10 @@
+{
+  "name": "now-secrets-test",
+  "scripts": {
+    "start": "cd .. && yarn build && cd example && node ../build"
+  },
+  "now_secrets": {
+    "prefix": "",
+    "env_file_name": ""
+  }
+}

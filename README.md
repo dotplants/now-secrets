@@ -1,4 +1,4 @@
-# now-secrets
+[![now-secrets](https://i.imgur.com/vBAkYuW.png)](https://npm.im/now-secrets)
 
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/dotplants/now-secrets/Node%20CI?style=for-the-badge)](https://github.com/dotplants/now-secrets/actions)
 [![GitHub](https://img.shields.io/github/license/dotplants/now-secrets?style=for-the-badge)](#license)
@@ -7,11 +7,11 @@
 
 # What's this?
 
-## ⚠This project is working in progress. Do not use this command.
-
 **now-secrets** is a command to automatically update ZEIT Now secrets based on .env.
 
-# How to Use
+**⚠ This is an unofficial project.**
+
+# Getting Started
 
 - Install this command to global.
 
@@ -31,6 +31,7 @@ vi .env
 
 ```
 ZEIT_TOKEN=foobar
+OTHER_ENV=hogefuga
 ```
 
 - Run `now-secrets`.
@@ -39,6 +40,54 @@ ZEIT_TOKEN=foobar
 now-secrets
 ```
 
+- If successful, `@{project_name}_{env_key}` has been added.
+
+# Config
+
+In `package.json`:
+
+```
+{
+  ...
+  "now_secrets": {
+    "prefix": "", // default: { project_name }
+    "env_file_name": "" // default: .env
+  }
+}
+```
+
+- prefix: `now_secrets.prefix` in package.json > `name` in now.json > `name` in package.json
+- scope: `scope` in now.json > personal account
+
+# CLI Usage
+
+### Update all secrets
+
+```bash
+now-secrets
+```
+
+### Add only
+
+> ZEIT Now specifications: Secrets that have already been added return an error.
+
+```bash
+now-secrets --no-remove
+```
+
+### Remove only (clean)
+
+```bash
+now-secrets --clean
+```
+
+### Do not update now.json
+
+```bash
+now-secrets --no-update-now-json
+```
+
 # License
 
 - code: MIT
+- icon: [Font Awesome - CC BY 4.0 License](https://fontawesome.com/license/free)

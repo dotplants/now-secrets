@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "scope": "dotplants",
+  "env": {
+    "OTHER_ENV": "@now-secrets-test_other_env"
+  }
+}
