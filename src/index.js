@@ -10,23 +10,41 @@ import saveFile from './utils/save-file';
 
 const run = async () => {
   const query = argvScanner();
-  const packageJson = JSON.parse(await loadFile('package.json'));
+  const packageJsonRaw = await loadFile('package.json').catch(() => void 0);
+  const packageJson = packageJsonRaw ? JSON.parse(packageJsonRaw) : {};
   if (!packageJson.now_secrets) packageJson.now_secrets = {};
 
   const nowJson = JSON.parse(await loadFile('now.json'));
   if (!nowJson.env) nowJson.env = {};
 
-  const prefix = (
-    packageJson.now_secrets.prefix ||
-    nowJson.name ||
-    packageJson.name
-  ).toLowerCase();
+  let prefix;
+  try {
+    prefix = (
+      packageJson.now_secrets.prefix ||
+      nowJson.name ||
+      packageJson.name
+    ).toLowerCase();
+  } catch (e) {
+    logError(e);
+  }
+
+  if (!prefix) {
+    logError(`${dangerColor('ERROR!')} Project name can't be detected.`);
+    logError('To continue, you need one of the following:');
+    logError('- now_secrets.prefix in package.json');
+    logError('- name in now.json');
+    logError('- name in package.json');
+    throw new Error("Project name can't be detected");
+  }
+
   const envFileName = packageJson.now_secrets.env_file_name || `.env`;
   const envs = parse(await loadFile(envFileName));
 
   if (!envs.ZEIT_TOKEN) {
     logError(
-      dangerColor(`${textBold('ZEIT_TOKEN')} is not found in ${envFileName}`)
+      `${dangerColor('ERROR!')} ${textBold(
+        'ZEIT_TOKEN'
+      )} is not found in ${envFileName}`
     );
     throw new Error('ZEIT_TOKEN is not found');
   }
@@ -125,4 +143,4 @@ const run = async () => {
   log(successColor('All processes were successful!✨'));
 };
 
-run();
+run().catch(console.error);
