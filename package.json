@@ -40,7 +40,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "chalk": "^3.0.0",
-    "cli-ux": "^5.4.3",
+    "cli-ux": "^5.4.4",
     "dotenv": "^8.2.0"
   },
   "files": [

@@ -1146,10 +1146,10 @@ cli-progress@^3.4.0:
     colors "^1.1.2"
     string-width "^2.1.1"
 
-cli-ux@^5.4.3:
-  version "5.4.3"
-  resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-5.4.3.tgz#3139f6ceab299d5e4b6d67111c746c7a4f8a0896"
-  integrity sha512-m4y6DPtXm5MrCVQL/szm47OoBgK7wDFEnZhit5Y+X9DsocvhNZayJ2yTud8nDanClUTUDq2nJYNXpBDnJD4h5g==
+cli-ux@^5.4.4:
+  version "5.4.4"
+  resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-5.4.4.tgz#de0c73825f6716d9562a79bd6552f032ac37465a"
+  integrity sha512-e7h613CIvIbuZk30T4F7jHQTmG7MMjp2V9BARWktOGMKWXr7DJXakG2JeeYPjRhmVqUSQP3xEJZAVoTwVKDZqw==
   dependencies:
     "@oclif/command" "^1.5.1"
     "@oclif/errors" "^1.2.1"
