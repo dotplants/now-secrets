@@ -9,7 +9,7 @@
   "repository": "https://github.com/dotplants/now-secrets.git",
   "homepage": "https://github.com/dotplants/now-secrets",
   "engines": {
-    "node": "10.x || 12.x || 13.x"
+    "node": "12.x || 13.x"
   },
   "publishConfig": {
     "access": "public"

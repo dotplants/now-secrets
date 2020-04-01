@@ -1,0 +1,32 @@
+name: Publish to npm
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    env:
+      node-version: 12.x
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Use Node.js ${{ env.node-version }} and setup .npmrc
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.node-version }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install deps
+        run: yarn --frozen-lockfile
+
+      - name: Build files
+        run: yarn build
+
+      - name: Run publish
+        run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
