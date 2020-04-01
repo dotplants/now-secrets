@@ -15,10 +15,10 @@
     "access": "public"
   },
   "scripts": {
-    "lint:js": "eslint --ignore-path .gitignore \"**/*.js\"",
-    "lint:prettier": "pretty-quick --check",
+    "lint:js": "eslint --cache --ignore-path .gitignore \"**/*.js\"",
+    "lint:prettier": "prettier --check --ignore-path .gitignore .",
     "lint": "npm-run-all lint:* -s",
-    "format:js": "eslint --fix --ignore-path .gitignore \"**/*.js\"",
+    "format:js": "eslint --cache --fix --ignore-path .gitignore \"**/*.js\"",
     "format:prettier": "pretty-quick",
     "format": "npm-run-all format:* -s",
     "build": "babel src -d build",
@@ -26,21 +26,21 @@
     "prepublish": "yarn build"
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.7",
-    "@babel/core": "^7.7.7",
-    "@babel/preset-env": "^7.7.7",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@nzws/prettier-config": "^1.0.0",
     "@yuzulabo/eslint-config": "^1.0.1",
-    "@yuzulabo/prettier-config": "~1",
-    "babel-eslint": "^10.0.3",
+    "babel-eslint": "^10.1.0",
     "eslint": "~6",
     "npm-run-all": "~4",
-    "prettier": "~1",
+    "prettier": "~2.0.2",
     "pretty-quick": "^2.0.1"
   },
   "dependencies": {
-    "axios": "^0.19.1",
+    "axios": "^0.19.2",
     "chalk": "^3.0.0",
-    "cli-ux": "^5.4.1",
+    "cli-ux": "^5.4.5",
     "dotenv": "^8.2.0"
   },
   "files": [
@@ -53,5 +53,5 @@
   "bin": {
     "now-secrets": "./bin/now-secrets"
   },
-  "prettier": "@yuzulabo/prettier-config"
+  "prettier": "@nzws/prettier-config"
 }
