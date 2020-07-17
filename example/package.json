@@ -1,7 +1,7 @@
 {
   "name": "now-secrets-test",
   "scripts": {
-    "start": "cd .. && yarn build && cd example && node ../build"
+    "start": "cd .. && yarn build && cd example && node ../dist"
   },
   "now_secrets": {
     "prefix": "",
