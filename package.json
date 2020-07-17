@@ -32,14 +32,14 @@
     "@nzws/prettier-config": "^1.0.1",
     "@yuzulabo/eslint-config": "^1.0.1",
     "babel-eslint": "^10.1.0",
-    "eslint": "~6",
+    "eslint": "~7.4.0",
     "npm-run-all": "~4",
     "prettier": "~2.0.5",
     "pretty-quick": "^2.0.1"
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "chalk": "^3.0.0",
+    "chalk": "^4.1.0",
     "cli-ux": "^5.4.9",
     "dotenv": "^8.2.0"
   },
