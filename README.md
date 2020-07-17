@@ -9,7 +9,7 @@
 
 # What's this?
 
-**now-secrets** is a command to automatically update [ZEIT Now](https://zeit.co) secrets based on .env.
+**now-secrets** is a command to automatically update [Vercel](https://vercel.com) secrets based on .env.
 
 **⚠ This is an unofficial project.**
 
@@ -28,11 +28,11 @@ cd /path/to/your-project
 vi .env
 ```
 
-- Add `ZEIT_TOKEN` to .env.
-  > You can create the token from https://zeit.co/account/tokens.
+- Add `VERCEL_TOKEN` to .env.
+  > You can create the token from https://vercel.com/account/tokens.
 
 ```
-ZEIT_TOKEN=foobar
+VERCEL_TOKEN=foobar
 OTHER_ENV=hogefuga
 ```
 
@@ -58,7 +58,7 @@ In `package.json`:
 }
 ```
 
-- prefix: `now_secrets.prefix` in package.json > `name` in now.json > `name` in package.json
+- prefix: `now_secrets.prefix` in package.json > `name` in vercel.json > `name` in package.json
 - scope: `scope` in now.json > personal account
 
 # CLI Usage
@@ -71,7 +71,7 @@ now-secrets
 
 ### Add only
 
-> ZEIT Now specifications: Secrets that have already been added return an error.
+> Vercel specifications: Secrets that have already been added return an error.
 
 ```bash
 now-secrets --no-remove
@@ -83,10 +83,10 @@ now-secrets --no-remove
 now-secrets --clean
 ```
 
-### Do not update now.json
+### Do not update vercel.json
 
 ```bash
-now-secrets --no-update-now-json
+now-secrets --no-update-vercel-json
 ```
 
 # License

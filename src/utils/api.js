@@ -5,7 +5,7 @@ import { log } from './logger';
 const api = ({ path, method = 'GET', data = {}, token, teamId }) =>
   new Promise((resolve, reject) => {
     const defaultParams = teamId ? { teamId } : {};
-    const url = `https://api.zeit.co/${path}`;
+    const url = `https://api.vercel.com/${path}`;
     log(`Request: ${textBold(url)}`);
     axios({
       method,

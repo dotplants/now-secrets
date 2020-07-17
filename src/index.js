@@ -10,29 +10,35 @@ import saveFile from './utils/save-file';
 
 const run = async () => {
   const query = argvScanner();
-  const packageJsonRaw = await loadFile('package.json').catch(() => void 0);
-  const packageJson = packageJsonRaw ? JSON.parse(packageJsonRaw) : {};
+  const packageJson = JSON.parse(
+    (await loadFile('package.json', false)) || '{}'
+  );
   if (!packageJson.now_secrets) packageJson.now_secrets = {};
 
-  const nowJson = JSON.parse(await loadFile('now.json'));
+  const vercelJson = await loadFile('vercel.json', false);
+  const nowJson = JSON.parse(
+    vercelJson || (await loadFile('now.json', false)) || '{}'
+  );
+  if (Object.keys(nowJson).length <= 0) {
+    logError(
+      `${dangerColor('ERROR!')} ${textBold('vercel.json')} is not found`
+    );
+    throw new Error('vercel.json is not found');
+  }
+
   if (!nowJson.env) nowJson.env = {};
 
-  let prefix;
-  try {
-    prefix = (
-      packageJson.now_secrets.prefix ||
-      nowJson.name ||
-      packageJson.name
-    ).toLowerCase();
-  } catch (e) {
-    logError(e);
-  }
+  const prefix = (
+    packageJson.now_secrets.prefix ||
+    nowJson.name ||
+    packageJson.name
+  ).toLowerCase();
 
   if (!prefix) {
     logError(`${dangerColor('ERROR!')} Project name can't be detected.`);
     logError('To continue, you need one of the following:');
     logError('- now_secrets.prefix in package.json');
-    logError('- name in now.json');
+    logError('- name in vercel.json');
     logError('- name in package.json');
     throw new Error("Project name can't be detected");
   }
@@ -40,15 +46,16 @@ const run = async () => {
   const envFileName = packageJson.now_secrets.env_file_name || `.env`;
   const envs = parse(await loadFile(envFileName));
 
-  if (!envs.ZEIT_TOKEN) {
+  const token = envs.VERCEL_TOKEN || envs.ZEIT_TOKEN;
+  if (!token) {
     logError(
       `${dangerColor('ERROR!')} ${textBold(
-        'ZEIT_TOKEN'
+        'VERCEL_TOKEN'
       )} is not found in ${envFileName}`
     );
-    throw new Error('ZEIT_TOKEN is not found');
+    throw new Error('VERCEL_TOKEN is not found');
   }
-  const token = envs.ZEIT_TOKEN;
+  delete envs.VERCEL_TOKEN;
   delete envs.ZEIT_TOKEN;
 
   let teamId;
@@ -99,7 +106,7 @@ const run = async () => {
   }
 
   if (projectSecrets[0] && !query.noRemove) {
-    log(infoColor('Removing envs...'));
+    log(infoColor('Removing secrets...'));
     const removePromises = projectSecrets.map(env => {
       const envName = Object.keys(nowJson.env).find(
         envName => nowJson.env[envName] === env.name
@@ -117,7 +124,7 @@ const run = async () => {
   }
 
   if (Object.keys(envs)[0] && !query.noAdd) {
-    log(infoColor('Adding envs...'));
+    log(infoColor('Adding secrets...'));
     const addPromises = Object.keys(envs).map(name => {
       const zeitEnvName = `${prefix}_${name.toLowerCase()}`;
       nowJson.env[name] = `@${zeitEnvName}`;
@@ -137,7 +144,7 @@ const run = async () => {
 
   if (!query.noUpdateNowJson) {
     const json = JSON.stringify(nowJson, null, 2);
-    await saveFile('now.json', json);
+    await saveFile(vercelJson ? 'vercel.json' : 'now.json', json);
   }
 
   log(successColor('All processes were successful!✨'));

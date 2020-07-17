@@ -29,7 +29,10 @@ const argvScanner = () => {
     query.noRemove = true;
   }
 
-  const noUpdateNowJson = finder(v, ['--no-update-now-json']);
+  const noUpdateNowJson = finder(v, [
+    '--no-update-now-json',
+    '--no-update-vercel-json'
+  ]);
   if (noUpdateNowJson) {
     query.noUpdateNowJson = true;
   }
