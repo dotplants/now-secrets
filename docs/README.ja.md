@@ -9,7 +9,7 @@
 
 # これは何？
 
-**now-secrets** は .env に基づいて[ZEIT Now](https://zeit.co)のシークレットを自動でアップデートするコマンドを提供します。
+**now-secrets** は .env に基づいて[Vercel](https://vercel.com)のシークレットを自動でアップデートするコマンドを提供します。
 
 **⚠ これは非公式のプロジェクトです。**
 
@@ -28,11 +28,11 @@ cd /path/to/your-project
 vi .env
 ```
 
-- `ZEIT_TOKEN` を.env に追加します。
-  > トークンは https://zeit.co/account/tokens から作成できます。
+- `VERCEL_TOKEN` を.env に追加します。
+  > トークンは https://vercel.com/account/tokens から作成できます。
 
 ```
-ZEIT_TOKEN=foobar
+VERCEL_TOKEN=foobar
 OTHER_ENV=hogefuga
 ```
 
@@ -42,7 +42,7 @@ OTHER_ENV=hogefuga
 now-secrets
 ```
 
-- If successful, `@{prefix}_{env_key}` has been added.
+- 成功した場合、 `@{prefix}_{env_key}` が追加されています。
 
 # 設定
 
@@ -58,7 +58,7 @@ now-secrets
 }
 ```
 
-- prefix: package.json 内の `now_secrets.prefix` > now.json 内の `name` > package.json 内の `name`
+- prefix: package.json 内の `now_secrets.prefix` > vercel.json 内の `name` > package.json 内の `name`
 - scope: now.json 内の `scope` > 個人アカウント
 
 # CLI Usage
@@ -71,7 +71,7 @@ now-secrets
 
 ### 追加のみ実行
 
-> ZEIT Now の仕様: 既にあるシークレットを新たに追加しようとした場合はエラーが返ります。
+> Vercel の仕様: 既にあるシークレットを新たに追加しようとした場合はエラーが返ります。
 
 ```bash
 now-secrets --no-remove
@@ -83,10 +83,10 @@ now-secrets --no-remove
 now-secrets --clean
 ```
 
-### now.json を更新しない
+### vercel.json を更新しない
 
 ```bash
-now-secrets --no-update-now-json
+now-secrets --no-update-vercel-json
 ```
 
 # License
