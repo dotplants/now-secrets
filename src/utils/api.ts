@@ -1,8 +1,24 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import { dangerColor, successColor, textBold } from './colors';
 import { log } from './logger';
 
-const api = ({ path, method = 'GET', data = {}, token, teamId }) =>
+type argsType = {
+  path: string;
+  method?: AxiosRequestConfig['method'];
+  data?: {
+    [keys: string]: string;
+  };
+  token: string;
+  teamId?: string;
+};
+
+const api = ({
+  path,
+  method = 'GET',
+  data = {},
+  token,
+  teamId
+}: argsType): Promise<any> =>
   new Promise((resolve, reject) => {
     const defaultParams = teamId ? { teamId } : {};
     const url = `https://api.vercel.com/${path}`;

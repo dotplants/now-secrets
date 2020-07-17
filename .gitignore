@@ -74,3 +74,4 @@ dist
 /tmp
 
 build/
+dist/

@@ -1,4 +1,4 @@
-const finder = (array, searchArray) => {
+const finder = (array: Array<string>, searchArray: Array<string>) => {
   const indexes = [];
   for (const searchValue of searchArray) {
     const result = array.indexOf(searchValue);
@@ -11,9 +11,15 @@ const finder = (array, searchArray) => {
   return indexes[0] === undefined ? false : indexes;
 };
 
-const argvScanner = () => {
-  const query = {};
-  let v = process.argv;
+type returnTypes = {
+  noAdd?: boolean;
+  noRemove?: boolean;
+  noUpdateNowJson?: boolean;
+};
+
+const argvScanner = (): returnTypes => {
+  const query: returnTypes = {};
+  const v: Array<string> = process.argv;
   v.splice(0, 2);
   if (!v[0]) {
     return query;
