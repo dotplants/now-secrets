@@ -39,9 +39,9 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "chalk": "^4.1.0",
     "cli-ux": "^5.4.9",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "kleur": "^4.0.2"
   },
   "files": [
     "/bin",

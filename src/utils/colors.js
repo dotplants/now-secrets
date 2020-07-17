@@ -1,9 +1,9 @@
-import chalk from 'chalk';
+import kleur from 'kleur';
 
-export const successColor = chalk.bold.green;
-export const warningColor = chalk.bold.yellow;
-export const dangerColor = chalk.bold.red;
-export const infoColor = chalk.bold.cyan;
-export const grayColor = chalk.bold.gray;
+export const textBold = kleur.bold;
 
-export const textBold = chalk.bold;
+export const successColor = textBold().green;
+export const warningColor = textBold().yellow;
+export const dangerColor = textBold().red;
+export const infoColor = textBold().cyan;
+export const grayColor = textBold().gray;
