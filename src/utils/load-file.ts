@@ -3,7 +3,7 @@ import { resolve as pathResolve } from 'path';
 import cli from 'cli-ux';
 import { textBold, warningColor } from './colors';
 
-const loadFile = (fileName, isRequired = true) =>
+const loadFile = (fileName: string, isRequired = true): Promise<string> =>
   new Promise((resolve, reject) => {
     cli.action.start(`Loading ${textBold(fileName)}`);
     readFile(pathResolve('.', fileName), 'utf-8', (err, data) => {

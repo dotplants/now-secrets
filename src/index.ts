@@ -58,7 +58,7 @@ const run = async () => {
   delete envs.VERCEL_TOKEN;
   delete envs.ZEIT_TOKEN;
 
-  let teamId;
+  let teamId = '';
   if (nowJson.scope) {
     try {
       const { id } = await api({
@@ -77,7 +77,13 @@ const run = async () => {
     }
   }
 
-  const { secrets } = await api({ path: 'v2/now/secrets', teamId, token });
+  const {
+    secrets
+  }: {
+    secrets: Array<{
+      name: string;
+    }>;
+  } = await api({ path: 'v2/now/secrets', teamId, token });
   const projectSecrets = secrets.filter(
     secret => secret.name.indexOf(`${prefix}_`) === 0
   );
@@ -111,7 +117,9 @@ const run = async () => {
       const envName = Object.keys(nowJson.env).find(
         envName => nowJson.env[envName] === env.name
       );
-      delete nowJson.env[envName];
+      if (envName) {
+        delete nowJson.env[envName];
+      }
 
       return api({
         path: `v2/now/secrets/${env.name}`,
