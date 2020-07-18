@@ -26,6 +26,7 @@
     "build:babel": "babel build -d dist",
     "build": "npm-run-all build:* -s",
     "start": "yarn build && node build",
+    "dev": "cd example && yarn start",
     "prepublish": "yarn build"
   },
   "devDependencies": {
@@ -45,6 +46,7 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "@dotplants/cli": "^0.1.3",
     "axios": "^0.19.2",
     "cli-ux": "^5.4.9",
     "dotenv": "^8.2.0",
