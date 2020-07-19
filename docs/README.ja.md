@@ -63,31 +63,30 @@ now-secrets
 
 # CLI Usage
 
-### 全てのシークレットを更新
+```
+now-secrets v1.1.0
 
-```bash
-now-secrets
+Usage: now-secrets [options]
+Update all secrets
+
+Options:
+  --clean, --no-add, -c: Add only
+  --no-remove: Remove only (clean)
+  --no-update-vercel-json, --no-update-now-json: Do not update vercel.json
+
+Usage: now-secrets [command] [options]
+
+Commands:
+  - update: Update all secrets
+  - remove: Delete secrets
+  - help: Show the help of cli
+
+Run "now-secrets help [command]" for detailed usage of the command.
 ```
 
 ### 追加のみ実行
 
 > Vercel の仕様: 既にあるシークレットを新たに追加しようとした場合はエラーが返ります。
-
-```bash
-now-secrets --no-remove
-```
-
-### 削除のみ実行
-
-```bash
-now-secrets --clean
-```
-
-### vercel.json を更新しない
-
-```bash
-now-secrets --no-update-vercel-json
-```
 
 # License
 
