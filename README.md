@@ -63,31 +63,30 @@ In `package.json`:
 
 # CLI Usage
 
-### Update all secrets
+```
+now-secrets v1.1.0
 
-```bash
-now-secrets
+Usage: now-secrets [options]
+Update all secrets
+
+Options:
+  --clean, --no-add, -c: Add only
+  --no-remove: Remove only (clean)
+  --no-update-vercel-json, --no-update-now-json: Do not update vercel.json
+
+Usage: now-secrets [command] [options]
+
+Commands:
+  - update: Update all secrets
+  - remove: Delete secrets
+  - help: Show the help of cli
+
+Run "now-secrets help [command]" for detailed usage of the command.
 ```
 
 ### Add only
 
 > Vercel specifications: Secrets that have already been added return an error.
-
-```bash
-now-secrets --no-remove
-```
-
-### Remove only (clean)
-
-```bash
-now-secrets --clean
-```
-
-### Do not update vercel.json
-
-```bash
-now-secrets --no-update-vercel-json
-```
 
 # License
 
