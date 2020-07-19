@@ -8,7 +8,7 @@ type argsType = {
   args: Array<string>;
   flags: {
     teamId?: string;
-    force: boolean;
+    force?: boolean;
   };
 };
 

@@ -38,7 +38,7 @@
     "@typescript-eslint/eslint-plugin": "^3.6.1",
     "@typescript-eslint/parser": "^3.6.1",
     "@yuzulabo/eslint-config": "^1.0.1",
-    "eslint": "~7.4.0",
+    "eslint": "~7.5.0",
     "eslint-config-prettier": "^6.11.0",
     "npm-run-all": "~4",
     "prettier": "~2.0.5",
@@ -46,7 +46,7 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "@dotplants/cli": "^0.1.3",
+    "@dotplants/cli": "^0.2.1",
     "axios": "^0.19.2",
     "cli-ux": "^5.4.9",
     "dotenv": "^8.2.0",

@@ -1,10 +1,10 @@
-import { Config } from '@dotplants/cli/build/runner';
+import { ConfigTypes } from '@dotplants/cli';
 import updateCommand from './commands/update';
 import removeCommand from './commands/remove';
 
 const { version } = require('../package.json');
 
-const config: Config = {
+const config: ConfigTypes = {
   name: `now-secrets v${version}`,
   binName: 'now-secrets',
   defaultCommand: 'update',
