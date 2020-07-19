@@ -64,7 +64,7 @@ now-secrets
 # CLI Usage
 
 ```
-now-secrets v1.1.0
+now-secrets v1.2.0
 
 Usage: now-secrets [options]
 Update all secrets
