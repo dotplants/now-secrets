@@ -15,11 +15,11 @@ const config: ConfigTypes = {
       flags: {
         noAdd: {
           name: ['clean', 'no-add', 'c'],
-          description: 'Add only'
+          description: 'Remove only (clean)'
         },
         noRemove: {
           name: ['no-remove'],
-          description: 'Remove only (clean)'
+          description: 'Add only'
         },
         noUpdateNowJson: {
           name: ['no-update-vercel-json', 'no-update-now-json'],

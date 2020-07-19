@@ -70,8 +70,8 @@ Usage: now-secrets [options]
 Update all secrets
 
 Options:
-  --clean, --no-add, -c: Add only
-  --no-remove: Remove only (clean)
+  --clean, --no-add, -c: Remove only (clean)
+  --no-remove: Add only
   --no-update-vercel-json, --no-update-now-json: Do not update vercel.json
 
 Usage: now-secrets [command] [options]
