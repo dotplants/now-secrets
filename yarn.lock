@@ -803,10 +803,10 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@dotplants/cli@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@dotplants/cli/-/cli-0.2.1.tgz#67964cf59c2638c3facd339874be8c21d30881ab"
-  integrity sha512-dvELTg45R6EAX5tpemTZs5RdMxAbHDKoSfWCBpGJ5UzsUjePP1smJoSva9LyNba/2/aHqim9gWsYKhj74vI4Tg==
+"@dotplants/cli@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@dotplants/cli/-/cli-0.2.2.tgz#c6cf330218dfdb34cef5d8363520de4db2569e23"
+  integrity sha512-KmWgQQNVK5SzCALJQw3kNt8TgSApQUIfPZxzbA678UA5wDj1U/Jvm06lnhSEv5p6j7K7lUAavgMG+ZqVoaqIlQ==
   dependencies:
     kleur "^4.0.2"
 
