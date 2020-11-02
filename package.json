@@ -46,7 +46,7 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "@dotplants/cli": "^0.2.1",
+    "@dotplants/cli": "^0.2.3",
     "axios": "^0.19.2",
     "cli-ux": "^5.4.9",
     "dotenv": "^8.2.0",
