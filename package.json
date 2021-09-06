@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "@dotplants/cli": "^0.2.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.3",
     "cli-ux": "^5.4.9",
     "dotenv": "^8.2.0",
     "kleur": "^4.0.2"
